@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<h3>Encontrar canil</h3>
+<br>
+<div class="col-md-12 jumbotron">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Data do banho</label>
+    <input type="date" class="form-control" [(ngModel)]="entrada.DataBanho">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Quantidade de cães grandes</label>
+    <input type="number" class="form-control" [(ngModel)]="entrada.QtdCaesGrandes">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Quantidade de cães pequenos</label>
+    <input type="number" class="form-control" [(ngModel)]="entrada.QtdCaesPequenos">
+  </div>
+  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="calcular()">Calcular</button>
+  <button type="button" class="btn btn-link btn-lg btn-block" (click)="limpar()">Limpar formulário</button>
+</div>
+
+<br>
+<div class="alert alert-success col-md-12" role="alert" *ngIf="status">
+  A melhor opção para você é a petshop {{ saida.Canil }} com preço de R$ {{ saida.Preco }}
+</div>
+
+
