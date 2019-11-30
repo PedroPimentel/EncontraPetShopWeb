@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ServiceService } from './servicos/service.service';
 import { Entrada } from './entidades/entrada';
 import { Saida } from './entidades/saida';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,21 @@ export class AppComponent {
   entrada: Entrada;
   saida: Saida;
   status: boolean = false;
+  formPetShop: FormGroup;
 
   constructor(private serviceService: ServiceService){}
 
   ngOnInit(){
+
     this.entrada = new Entrada();
+
+    this.formPetShop = new FormGroup({
+      dataBanho: new FormControl('', Validators.required),
+      qtdCaesGrandes: new FormControl('', Validators.required),
+      qtdCaesPequenos: new FormControl('', Validators.required),
+    })
+
+    this.visualizar();
   }
 
   calcular(){
@@ -33,6 +44,11 @@ export class AppComponent {
         }
       })
   }
+
+  visualizar(){
+    console.log(this.formPetShop);
+  }
+
   limpar(){
      this.entrada = new Entrada();
      this.status = false;   

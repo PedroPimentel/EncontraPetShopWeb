@@ -3,26 +3,28 @@
 
 <h3>Encontrar canil</h3>
 <br>
-<div class="col-md-12 jumbotron">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Data do banho</label>
-    <input type="date" class="form-control" [(ngModel)]="entrada.DataBanho">
+<form [formGroup]="formPetShop" (ngSubmit)="signup(form)" (change)="visualizar()">
+  <div class="col-md-12 jumbotron">
+    <div class="form-group">
+      <label>Data do banho</label>
+      <input type="date" class="form-control" formControlName="dataBanho" [(ngModel)]="entrada.DataBanho">
+    </div>
+    <div class="form-group">
+      <label>Quantidade de cães grandes</label>
+      <input type="number" class="form-control" formControlName="qtdCaesGrandes" [(ngModel)]="entrada.QtdCaesGrandes">
+    </div>
+    <div class="form-group">
+      <label>Quantidade de cães pequenos</label>
+      <input type="number" class="form-control" formControlName="qtdCaesPequenos"[(ngModel)]="entrada.QtdCaesPequenos">
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="calcular()" [disabled]="formPetShop.status == 'INVALID'">Calcular</button>
+    <button type="button" class="btn btn-link btn-lg btn-block" (click)="limpar()">Limpar formulário</button>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Quantidade de cães grandes</label>
-    <input type="number" class="form-control" [(ngModel)]="entrada.QtdCaesGrandes">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Quantidade de cães pequenos</label>
-    <input type="number" class="form-control" [(ngModel)]="entrada.QtdCaesPequenos">
-  </div>
-  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="calcular()">Calcular</button>
-  <button type="button" class="btn btn-link btn-lg btn-block" (click)="limpar()">Limpar formulário</button>
-</div>
-
+</form>
 <br>
 <div class="alert alert-success col-md-12" role="alert" *ngIf="status">
   A melhor opção para você é a petshop {{ saida.Canil }} com preço de R$ {{ saida.Preco }}
 </div>
+
 
 
